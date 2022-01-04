@@ -116,13 +116,12 @@ class UIFunction(MainWindow):
                 #----> MAKE THE STACKED WIDGET PAGE TO ABOUT HOME PAGE
                 self.ui.stackedWidget.setCurrentWidget(self.ui.page_about_home)
                 self.ui.lab_tab.setText("About > Home")
-                self.ui.frame_home.setStyleSheet("background:rgb(91,90,90)")
             else:
                 extend = minWidth
                 #-----> REVERT THE ABOUT HOME PAGE TO NORMAL HOME PAGE
                 self.ui.stackedWidget.setCurrentWidget(self.ui.page_home)
                 self.ui.lab_tab.setText("Home")
-                self.ui.frame_home.setStyleSheet("background:rgb(91,90,90)")
+            self.ui.frame_home.setStyleSheet("background:rgb(91,90,90)")
             #THIS ANIMATION IS RESPONSIBLE FOR THE TOODLE TO MOVE IN A SOME FIXED STATE.
             self.animation = QPropertyAnimation(self.ui.frame_bottom_west, b"minimumWidth")
             self.animation.setDuration(300)
@@ -316,7 +315,7 @@ class APFunction():
     def addNumbers(self, number, enable):
         if enable:
             lastProgress = 0
-            for x in range(0, int(number), 1):
+            for x in range(int(number)):
                 progress = int((x/int(number))*100)
                 if progress!=lastProgress:
                     self.ui.progressBar_bug.setValue(progress)
